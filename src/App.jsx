@@ -14,9 +14,17 @@ function App() {
   function addToCart(item) {
     // Verificando si el item ya existe en el carrito
     const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
-    console.log(itemExists);
 
-    setCart((prevCart) => [...prevCart, item]);
+    if (itemExists >= 0) {
+      // Si el item ya existe, se aumenta la cantidad en 1
+      const updatedCart = [...cart];
+      updatedCart[itemExists].quantity++;
+      setCart(updatedCart);
+    } else {
+      // Si el item no existe, se agrega al carrito y se le asigna una cantidad de que se inicia en 1
+      item.quantity = 1;
+      setCart([...cart, item]);
+    }
   }
 
   return (
