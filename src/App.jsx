@@ -9,7 +9,13 @@ function App() {
   const [data, setData] = useState(db);
   const [cart, setCart] = useState([]);
 
+  // Creando la función addToCart
+
   function addToCart(item) {
+    // Verificando si el item ya existe en el carrito
+    const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
+    console.log(itemExists);
+
     setCart((prevCart) => [...prevCart, item]);
   }
 
