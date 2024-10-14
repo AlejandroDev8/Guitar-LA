@@ -13,7 +13,10 @@
   max-width: 2rem;
   position: relative;
   z-index: 100;
-  
+}
+
+.carrito:hover {
+  cursor: pointer;
 }
 
 .carrito #carrito {
