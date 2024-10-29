@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-function Header({ cart, removeFromCart }) {
+function Header({ cart, removeFromCart, increaseQuantity }) {
   // Usando un memo para evitar renderizados innecesarios
 
   const isEmpty = useMemo(() => cart.length === 0, [cart]);
@@ -66,7 +66,11 @@ function Header({ cart, removeFromCart }) {
                                 -
                               </button>
                               {guitar.quantity}
-                              <button type="button" className="btn btn-dark">
+                              <button
+                                type="button"
+                                className="btn btn-dark"
+                                onClick={() => increaseQuantity(guitar.id)}
+                              >
                                 +
                               </button>
                             </td>
