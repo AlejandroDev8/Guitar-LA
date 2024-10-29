@@ -22,6 +22,7 @@ function App() {
 
     if (itemExists >= 0) {
       // Si el item ya existe, se aumenta la cantidad en 1
+      if (cart[itemExists].quantity >= MAX_QUANTITY) return;
       const updatedCart = [...cart];
       updatedCart[itemExists].quantity++;
       setCart(updatedCart);
@@ -62,6 +63,10 @@ function App() {
     setCart(updatedCart);
   }
 
+  function clearCart() {
+    setCart([]);
+  }
+
   return (
     <>
       <Header
@@ -69,6 +74,7 @@ function App() {
         removeFromCart={removeFromCart}
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
+        clearCart={clearCart}
       />
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
