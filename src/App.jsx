@@ -11,7 +11,7 @@ function App() {
 
   // Creando los estados data y cart
 
-  const [data, setData] = useState(db);
+  const [data] = useState(db);
   const [cart, setCart] = useState(initialCart);
 
   // Definiendo las constantes MAX_QUANTITY y MIN_QUANTITY
