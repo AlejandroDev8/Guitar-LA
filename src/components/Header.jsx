@@ -1,12 +1,16 @@
+import { useMemo } from "react";
+
 function Header({ cart }) {
-  // Usando un 'state derivado'
+  // Usando un memo para evitar renderizados innecesarios
 
-  const isEmpty = () => cart.length === 0;
+  const isEmpty = useMemo(() => cart.length === 0, [cart]);
 
-  // Calcular el total del carrito con un state derivado y la función reduce
+  // Calcular el total del carrito con useMemo para evitar renderizados innecesarios
 
-  const cartTotal = () =>
-    cart.reduce((total, item) => total + item.quantity * item.price, 0);
+  const cartTotal = useMemo(
+    () => cart.reduce((total, item) => total + item.quantity * item.price, 0),
+    [cart]
+  );
 
   return (
     <header className="py-5 header">
@@ -30,11 +34,11 @@ function Header({ cart }) {
               />
 
               <div id="carrito" className="bg-white p-3">
-                {isEmpty() ? (
+                {isEmpty ? (
                   <p className="text-center">El carrito esta vacio</p>
                 ) : (
                   <>
-                    <p className="text-center">Artículos {cart.length} </p>
+                    <p className="text-center">Artículos {cart.length}</p>
                     <table className="w-100 table">
                       <thead>
                         <tr>
@@ -76,8 +80,7 @@ function Header({ cart }) {
                       </tbody>
                     </table>
                     <p className="text-end">
-                      Total pagar:{" "}
-                      <span className="fw-bold">${cartTotal()}</span>
+                      Total pagar: <span className="fw-bold">${cartTotal}</span>
                     </p>
                   </>
                 )}
