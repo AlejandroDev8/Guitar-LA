@@ -9,7 +9,10 @@ function App() {
   const [data, setData] = useState(db);
   const [cart, setCart] = useState([]);
 
+  // Definiendo las constantes MAX_QUANTITY y MIN_QUANTITY
+
   const MAX_QUANTITY = 10;
+  const MIN_QUANTITY = 1;
 
   // Creando la función addToCart
 
@@ -46,12 +49,26 @@ function App() {
     setCart(updatedCart);
   }
 
+  function decreaseQuantity(id) {
+    const updatedCart = cart.map((item) => {
+      if (item.id === id && item.quantity > MIN_QUANTITY) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  }
+
   return (
     <>
       <Header
         cart={cart}
         removeFromCart={removeFromCart}
         increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
       />
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
