@@ -46,6 +46,7 @@ npm run dev
 - Utilizar CSS para estilizar la aplicación
 - Utilizar JavaScript para manipular el DOM
 - Conocer los conceptos básicos de los Hooks en React, como por ejemplo useState, useEffect y UseMemo, que fueron utilizados en el proyecto
+- Conocer las bases y conceptos báscios para la creación de custom hooks
 
 ## Autor ✒️
 
